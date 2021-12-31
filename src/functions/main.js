@@ -1,4 +1,5 @@
 const Init = require("./init")
+const setLatencies = require("./setLatencies")
 var init = Init()
 
 var instructionQueue = init[0]
@@ -25,5 +26,5 @@ var registerFile = init[5] //access register using registerFile.Fx
 
 var memory = init[6].data //access memory address using memory[x]
 
-
+var latencies = setLatencies(2,3,1,1)
 
