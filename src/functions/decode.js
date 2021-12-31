@@ -6,7 +6,7 @@ function decode(instruction, latencies){
         return {name, destination: r1, source1: instruction.split(" ")[2], latency: latencies.loadLatency}
     }
     else if(name==="S.D"){
-        return {name, source1: r1, destination: instruction.split(" ")[2], latency: latencies.loadLatency}
+        return {name, source1: r1, destination: instruction.split(" ")[2], latency: latencies.storeLatency}
     }
     else{
         const r2 = instruction.split(" ")[2].substring(0, instruction.split(" ")[2].length-1)
