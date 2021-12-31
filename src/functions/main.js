@@ -22,8 +22,7 @@ var S1 = init[4].S1
 var S2 = init[4].S2
 var storeBuffer = [S1, S2]
 
-var registerFile = init[5] //access register using registerFile.Fx
-
+var registerFile = init[5] //access register using registerFile[x]
 var memory = init[6].data //access memory address using memory[x]
 
 var latencies = setLatencies(2,3,1,1)
