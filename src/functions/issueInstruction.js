@@ -1,6 +1,6 @@
 const decode = require("./decode");
 
-function issueInstruction(instruction, addBuffer, mulBuffer, loadBuffer, storeBuffer, registerFile) {
+function issueInstruction(instruction, addBuffer, mulBuffer, loadBuffer, storeBuffer, registerFile, instructionQueue, cycle) {
     let decoded = decode(instruction)
 
     if (decoded.name === "ADD.D" || decoded.name === "SUB.D") {
@@ -22,6 +22,8 @@ function issueInstruction(instruction, addBuffer, mulBuffer, loadBuffer, storeBu
 
                 let dest = parseInt(decoded.destination.substring(1), 10)
                 registerFile[dest].Q = "A" + (i + 1)
+                let pos = instructionQueue.instruction.indexOf(instruction);
+                instructionQueue.issue[pos] = cycle;
                 return true;
             }
 
@@ -46,6 +48,8 @@ function issueInstruction(instruction, addBuffer, mulBuffer, loadBuffer, storeBu
 
                 let dest = parseInt(decoded.destination.substring(1), 10)
                 registerFile[dest].Q = "M" + (i + 1)
+                let pos = instructionQueue.instruction.indexOf(instruction);
+                instructionQueue.issue[pos] = cycle;
                 return true;
             }
 
@@ -60,6 +64,8 @@ function issueInstruction(instruction, addBuffer, mulBuffer, loadBuffer, storeBu
 
                 let dest = parseInt(decoded.destination.substring(1), 10)
                 registerFile[dest].Q = "L" + (i + 1)
+                let pos = instructionQueue.instruction.indexOf(instruction);
+                instructionQueue.issue[pos] = cycle;
                 return true;
             }
 
@@ -78,6 +84,8 @@ function issueInstruction(instruction, addBuffer, mulBuffer, loadBuffer, storeBu
                     storeBuffer[i].Q = source1.value
 
                 storeBuffer[i].address = decoded.destination
+                let pos = instructionQueue.instruction.indexOf(instruction);
+                instructionQueue.issue[pos] = cycle;
                 return true;
             }
 
