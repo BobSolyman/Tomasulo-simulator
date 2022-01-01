@@ -1,13 +1,12 @@
 const decode = require("./decode")
 
 function writeResult(instruction, id, result, resStation, addBuffer, mulBuffer, loadBuffer, storeBuffer, regFile, instructionQueue, memory, cycle, latencies){
-    console.log(regFile)
     var decoded = decode(instruction, latencies)
     var dest = parseInt(decoded.destination.substring(1), 10)
-    console.log(dest)
     var stationNo = parseInt(resStation.substring(1), 10) - 1
 
     if(resStation.includes('A')){
+        addBuffer[stationNo].id = ''
         addBuffer[stationNo].op = ''
         addBuffer[stationNo].Vj = ''
         addBuffer[stationNo].Vk = ''
@@ -17,6 +16,7 @@ function writeResult(instruction, id, result, resStation, addBuffer, mulBuffer, 
         addBuffer[stationNo].cyclesRemaining = ''
     }
     else if(resStation.includes('M')){
+        mulBuffer[stationNo].id = ''
         mulBuffer[stationNo].op = ''
         mulBuffer[stationNo].Vj = ''
         mulBuffer[stationNo].Vk = ''
@@ -26,11 +26,13 @@ function writeResult(instruction, id, result, resStation, addBuffer, mulBuffer, 
         mulBuffer[stationNo].cyclesRemaining = ''
     }
     else if(resStation.includes('L')){
+        loadBuffer[stationNo].id = ''
         loadBuffer[stationNo].address = ''
         loadBuffer[stationNo].busy = 0
         loadBuffer[stationNo].cyclesRemaining = ''
     }
     else if(resStation.includes('S')){
+        storeBuffer[stationNo].id = ''
         storeBuffer[stationNo].address = ''
         storeBuffer[stationNo].V = ''
         storeBuffer[stationNo].Q = ''
@@ -60,7 +62,6 @@ function writeResult(instruction, id, result, resStation, addBuffer, mulBuffer, 
     }
 
     for(var i in mulBuffer){ //for the multiply buffer
-        console.log(i)
         if(mulBuffer[i].Qj === resStation){
             mulBuffer[i].Qj = ''
             mulBuffer[i].Vj = result
