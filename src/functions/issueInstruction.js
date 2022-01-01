@@ -23,6 +23,7 @@ function issueInstruction(instruction, id, addBuffer, mulBuffer, loadBuffer, sto
                 addBuffer[i].id = id
                 let dest = parseInt(decoded.destination.substring(1), 10)
                 registerFile[dest].Q = "A" + (parseInt(i) + 1)
+                registerFile[dest].value = ''
                 instructionQueue.issue[id] = cycle;
                 return true;
             }
@@ -49,6 +50,7 @@ function issueInstruction(instruction, id, addBuffer, mulBuffer, loadBuffer, sto
                 mulBuffer[i].id = id
                 let dest = parseInt(decoded.destination.substring(1), 10)
                 registerFile[dest].Q = "M" + (parseInt(i) + 1)
+                registerFile[dest].value = ''
                 instructionQueue.issue[id] = cycle;
                 return true;
             }
@@ -65,6 +67,7 @@ function issueInstruction(instruction, id, addBuffer, mulBuffer, loadBuffer, sto
                 loadBuffer[i].id = id
                 let dest = parseInt(decoded.destination.substring(1), 10)
                 registerFile[dest].Q = "L" + (parseInt(i) + 1)
+                registerFile[dest].value = ''
                 instructionQueue.issue[id] = cycle;
                 return true;
             }
