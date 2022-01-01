@@ -5,16 +5,16 @@ function init() {
         regFile.push({Q: "", value: ""})
     }
     return [{id: [], instruction: [], issue: [], execute: [], writeResult: []}, //instruction Queue
-            {A1: {op:"", Vj:"", Vk:"", Qj:"", Qk:"", busy: 0, cyclesRemaining: ""}, 
-                A2: {op:"", Vj:"", Vk:"", Qj:"", Qk:"", busy: 0, cyclesRemaining: ""},
-                A3: {op:"", Vj:"", Vk:"", Qj:"", Qk:"", busy: 0, cyclesRemaining: ""}}, //add/sub reservation
-            {M1: {op:"", Vj:"", Vk:"", Qj:"", Qk:"", busy: 0, cyclesRemaining: ""}, 
-                M2: {op:"", Vj:"", Vk:"", Qj:"", Qk:"", busy: 0, cyclesRemaining: ""}, 
-                M3: {op:"", Vj:"", Vk:"", Qj:"", Qk:"", busy: 0, cyclesRemaining: ""}}, //mul/diV reservation
-            {L1: {address: "", busy: 0, cyclesRemaining: ""},
-                L2: {address: "", busy: 0, cyclesRemaining: ""}}, //load reservation
-            {S1: {address: "", V: "", Q: "", busy: 0, cyclesRemaining: ""}, 
-                S2: {address: "", V: "", Q: "", busy: 0, cyclesRemaining: ""}}, // store reservation
+            {A1: {id: "", op:"", Vj:"", Vk:"", Qj:"", Qk:"", busy: 0, cyclesRemaining: ""}, 
+                A2: {id: "", op:"", Vj:"", Vk:"", Qj:"", Qk:"", busy: 0, cyclesRemaining: ""},
+                A3: {id: "", op:"", Vj:"", Vk:"", Qj:"", Qk:"", busy: 0, cyclesRemaining: ""}}, //add/sub reservation
+            {M1: {id: "", op:"", Vj:"", Vk:"", Qj:"", Qk:"", busy: 0, cyclesRemaining: ""}, 
+                M2: {id: "", op:"", Vj:"", Vk:"", Qj:"", Qk:"", busy: 0, cyclesRemaining: ""}, 
+                M3: {id: "", op:"", Vj:"", Vk:"", Qj:"", Qk:"", busy: 0, cyclesRemaining: ""}}, //mul/diV reservation
+            {L1: {id: "", address: "", busy: 0, cyclesRemaining: ""},
+                L2: {id: "", address: "", busy: 0, cyclesRemaining: ""}}, //load reservation
+            {S1: {id: "", address: "", V: "", Q: "", busy: 0, cyclesRemaining: ""}, 
+                S2: {id: "", address: "", V: "", Q: "", busy: 0, cyclesRemaining: ""}}, // store reservation
             regFile, //register file
             {data: []} //memory
     ]
