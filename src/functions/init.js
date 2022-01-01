@@ -2,7 +2,7 @@ function init() {
     console.log("init")
     var regFile = []
     for(var i=0; i<32; i++) {
-        regFile.push({Q: "A2", value: ""})
+        regFile.push({Q: "", value: ""})
     }
     return [{id: [], instruction: [], issue: [], execute: [], writeResult: []}, //instruction Queue
             {A1: {op:"", Vj:"", Vk:"", Qj:"", Qk:"", busy: 0, cyclesRemaining: ""}, 
