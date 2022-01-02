@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { Button, Grid, TextareaAutosize, TextField } from '@mui/material';
 import AddBuffer from "./AddBuffer"
 import LoadBuffer from './LoadBuffer';
@@ -9,27 +9,6 @@ import StoreBuffer from './StoreBuffer';
 import InstructionQueue from './InstructionQueue';
 
 var func = require("../functions/main");
-
-const a = {A1: {id: "1", op:"ADD.D", Vj:"34", Vk:"12", Qj:"", Qk:"", busy: 1, cyclesRemaining: "2"}, 
-             A2: {id: "2", op:"ADD.D", Vj:"", Vk:"", Qj:"M1", Qk:"M1", busy: 1, cyclesRemaining: "3"},
-             A3: {id: "", op:"", Vj:"", Vk:"", Qj:"", Qk:"", busy: 0, cyclesRemaining: ""}}
-
-const m = {M1: {id: "1", op:"MUL.D", Vj:"34", Vk:"12", Qj:"", Qk:"", busy: 1, cyclesRemaining: "2"}, 
-            M2: {id: "", op:"", Vj:"", Vk:"", Qj:"", Qk:"", busy: 0, cyclesRemaining: ""},
-            M3: {id: "", op:"", Vj:"", Vk:"", Qj:"", Qk:"", busy: 0, cyclesRemaining: ""}}
-
-const l = {L1: {id: "1", address: "100", busy: 1, cyclesRemaining: "1"},
-            L2: {id: "", address: "", busy: 0, cyclesRemaining: ""}}
-
-const s = {S1: {id: "1", address: "420", V: "1.99", Q: "1", busy: 1, cyclesRemaining: "20"}, 
-            S2: {id: "", address: "", V: "", Q: "", busy: 0, cyclesRemaining: ""}}
-
-const d = {data: []};
-
-var regFile = []
-    for(var i=0; i<32; i++) {
-        regFile.push({Q: "", value: ""})
-    }
 
 function Page() {
     const [started, setStarted] = useState(false)
@@ -94,7 +73,7 @@ function Page() {
             </Grid>
         </Grid>
         <br/>
-        <Button disabled={started} style={{ width: 500 }} onClick={handleSubmit} variant="contained" disabled={started}>Submit</Button>
+        <Button style={{ width: 500 }} onClick={handleSubmit} variant="contained" disabled={started}>Submit</Button>
            
       <h2>Current Clock Cycle: {clock}</h2>
       <Button variant="contained" disabled={!started} onClick={handleNext}>Next Cycle</Button>

@@ -44,9 +44,9 @@ function Memory({data}) {
         </TableHead>
         <TableBody>
           {data.map((row) => (
-            <StyledTableRow key={data.indexOf(row)}>
+            <StyledTableRow key={data.indexOf(row)+1}>
               <StyledTableCell component="th" scope="row">
-                {data.indexOf(row)}
+                {data.indexOf(row)+1}
               </StyledTableCell>
               <StyledTableCell align="right">{row}</StyledTableCell>
             </StyledTableRow>

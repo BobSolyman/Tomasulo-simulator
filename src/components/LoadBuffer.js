@@ -29,14 +29,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(name, id, address, busy, cyclesRemaining) {
-  return { name, id, address, busy, cyclesRemaining };
-}
 
 function LoadBuffer({buffer}) {
-    const rows = [
-        createData("L1", buffer[0].id, buffer[0].address, buffer[0].busy, buffer[0].cyclesRemaining),
-        createData("L2", buffer[1].id, buffer[1].address, buffer[1].busy, buffer[1].cyclesRemaining)
+    var rows = [
+      { name: "L1", id: buffer[0].id, address: buffer[0].address, busy: buffer[0].busy, cyclesRemaining: buffer[0].cyclesRemaining },
+      { name: "L2", id: buffer[1].id, address: buffer[1].address, busy: buffer[1].busy, cyclesRemaining: buffer[1].cyclesRemaining }
     ];
 
 
@@ -55,7 +52,7 @@ function LoadBuffer({buffer}) {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <StyledTableRow key={row.id}>
+            <StyledTableRow>
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>

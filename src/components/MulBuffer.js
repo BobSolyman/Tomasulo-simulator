@@ -60,7 +60,7 @@ function MulBuffer({buffer}) {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <StyledTableRow key={row.id}>
+            <StyledTableRow >
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>
