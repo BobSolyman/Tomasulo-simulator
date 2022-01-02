@@ -35,8 +35,8 @@ function createData(name, id, address, busy, cyclesRemaining) {
 
 function LoadBuffer({buffer}) {
     const rows = [
-        createData("L1", buffer.L1.id, buffer.L1.address, buffer.L1.busy, buffer.L1.cyclesRemaining),
-        createData("L2", buffer.L2.id, buffer.L2.address, buffer.L2.busy, buffer.L2.cyclesRemaining)
+        createData("L1", buffer[0].id, buffer[0].address, buffer[0].busy, buffer[0].cyclesRemaining),
+        createData("L2", buffer[1].id, buffer[1].address, buffer[1].busy, buffer[1].cyclesRemaining)
     ];
 
 

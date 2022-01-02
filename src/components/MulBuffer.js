@@ -35,9 +35,9 @@ function createData(name, id, Op, Vj, Vk, Qj, Qk, busy, cyclesRemaining) {
 
 function MulBuffer({buffer}) {
     const rows = [
-        createData("M1", buffer.M1.id, buffer.M1.op, buffer.M1.Vj, buffer.M1.Vk, buffer.M1.Qj, buffer.M1.Qk, buffer.M1.busy, buffer.M1.cyclesRemaining),
-        createData("M2", buffer.M2.id, buffer.M2.op, buffer.M2.Vj, buffer.M2.Vk, buffer.M2.Qj, buffer.M2.Qk, buffer.M2.busy, buffer.M2.cyclesRemaining),
-        createData("M3", buffer.M3.id, buffer.M3.op, buffer.M3.Vj, buffer.M3.Vk, buffer.M3.Qj, buffer.M3.Qk, buffer.M3.busy, buffer.M3.cyclesRemaining),
+        createData("M1", buffer[0].id, buffer[0].op, buffer[0].Vj, buffer[0].Vk, buffer[0].Qj, buffer[0].Qk, buffer[0].busy, buffer[0].cyclesRemaining),
+        createData("M2", buffer[1].id, buffer[1].op, buffer[1].Vj, buffer[1].Vk, buffer[1].Qj, buffer[1].Qk, buffer[1].busy, buffer[1].cyclesRemaining),
+        createData("M3", buffer[2].id, buffer[2].op, buffer[2].Vj, buffer[2].Vk, buffer[2].Qj, buffer[2].Qk, buffer[2].busy, buffer[2].cyclesRemaining),
     ];
 
 
@@ -55,7 +55,7 @@ function MulBuffer({buffer}) {
             <StyledTableCell align="right">Qj</StyledTableCell>
             <StyledTableCell align="right">Qk</StyledTableCell>
             <StyledTableCell align="right">Busy</StyledTableCell>
-            <StyledTableCell align="right">cycles Remaining</StyledTableCell>
+            <StyledTableCell align="right">Cycles Remaining</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>

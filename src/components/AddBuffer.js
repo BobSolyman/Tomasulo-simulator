@@ -35,9 +35,9 @@ function createData(name, id, Op, Vj, Vk, Qj, Qk, busy, cyclesRemaining) {
 
 function AddBuffer({buffer}) {
     const rows = [
-        createData("A1", buffer.A1.id, buffer.A1.op, buffer.A1.Vj, buffer.A1.Vk, buffer.A1.Qj, buffer.A1.Qk, buffer.A1.busy, buffer.A1.cyclesRemaining),
-        createData("A2", buffer.A2.id, buffer.A2.op, buffer.A2.Vj, buffer.A2.Vk, buffer.A2.Qj, buffer.A2.Qk, buffer.A2.busy, buffer.A2.cyclesRemaining),
-        createData("A3", buffer.A3.id, buffer.A3.op, buffer.A3.Vj, buffer.A3.Vk, buffer.A3.Qj, buffer.A3.Qk, buffer.A3.busy, buffer.A3.cyclesRemaining),
+        createData("A1", buffer[0].id, buffer[0].op, buffer[0].Vj, buffer[0].Vk, buffer[0].Qj, buffer[0].Qk, buffer[0].busy, buffer[0].cyclesRemaining),
+        createData("A2", buffer[1].id, buffer[1].op, buffer[1].Vj, buffer[1].Vk, buffer[1].Qj, buffer[1].Qk, buffer[1].busy, buffer[1].cyclesRemaining),
+        createData("A3", buffer[2].id, buffer[2].op, buffer[2].Vj, buffer[2].Vk, buffer[2].Qj, buffer[2].Qk, buffer[2].busy, buffer[2].cyclesRemaining),
     ];
 
 

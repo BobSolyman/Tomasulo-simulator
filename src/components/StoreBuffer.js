@@ -35,8 +35,8 @@ function createData(name, id, address, V, Q, busy, cyclesRemaining) {
 
 function StoreBuffer({buffer}) {
     const rows = [
-        createData("S1", buffer.S1.id, buffer.S1.address, buffer.S1.V, buffer.S1.Q, buffer.S1.busy, buffer.S1.cyclesRemaining),
-        createData("S2", buffer.S2.id, buffer.S2.address, buffer.S2.V, buffer.S2.Q, buffer.S2.busy, buffer.S2.cyclesRemaining)
+        createData("S1", buffer[0].id, buffer[0].address, buffer[0].V, buffer[0].Q, buffer[0].busy, buffer[0].cyclesRemaining),
+        createData("S2", buffer[1].id, buffer[1].address, buffer[1].V, buffer[1].Q, buffer[1].busy, buffer[1].cyclesRemaining)
     ];
 
 
