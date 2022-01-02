@@ -17,7 +17,7 @@ var num = 0;
 function start(instructions, addLatency, mulLatency, loadLatency, storeLatency) {
     var init = Init()
     instructionQueue = init[0]
-
+    
     A1 = init[1].A1
     A2 = init[1].A2
     A3 = init[1].A3
@@ -260,3 +260,38 @@ function nextClock() {
         }
         console.log(instructionQueue)
 }
+
+function getClock(){
+    return clock
+}
+
+function getInstructionQueue(){
+    return instructionQueue
+}
+
+function getAddBuffer(){
+    return addBuffer
+}
+
+function getMulBuffer(){
+    return mulBuffer
+}
+
+function getLoadBuffer(){
+    return loadBuffer
+}
+
+function getStoreBuffer(){
+    return storeBuffer
+}
+
+function getRegisterFile(){
+    return registerFile
+}
+
+function getMemory(){
+    return memory
+}
+
+
+module.exports = {start, click, getClock, getInstructionQueue, getAddBuffer, getMulBuffer, getLoadBuffer, getStoreBuffer, getRegisterFile, getMemory};
