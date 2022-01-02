@@ -39,7 +39,7 @@ function Page() {
     }
 
     const getValues = () => {
-        setClock(func.getClock())
+        setClock(func.getClock()-1)
         setInstructionsQueue(func.getInstructionQueue())
         setAddBuffer(func.getAddBuffer())
         setMulBuffer(func.getMulBuffer())
