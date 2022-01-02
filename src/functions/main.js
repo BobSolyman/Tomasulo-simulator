@@ -114,6 +114,57 @@ function nextClock() {
             }
         }
 
+        for(var i = 0; i < instructionQueue.id.length; i++) { //Execute
+            if(instructionQueue.issue[i] !== undefined && instructionQueue.execute[i] === undefined){
+                var inst = instructionQueue.id[i]
+                var decoded = decode(instructionQueue.instruction[i], latencies)
+                if(decoded.name === "MUL.D" || decoded.name === "DIV.D") {
+                    for(var j in mulBuffer) {
+                        if(mulBuffer[j].id === inst) {
+                            if(checkReady(mulBuffer[j])) {
+                                var tmp = parseInt(j) + 1
+                                startExecuting(instructionQueue.instruction[i], inst, "M" + tmp , addBuffer, mulBuffer, loadBuffer, storeBuffer, clock, instructionQueue, latencies)
+                                break;
+                            }
+                        }
+                    }
+                }
+                else if(decoded.name === "ADD.D" || decoded.name === "SUB.D") {
+                    for(var j in addBuffer) {
+                        if(addBuffer[j].id === inst) {
+                            if(checkReady(addBuffer[j])) {
+                                var tmp = parseInt(j) + 1
+                                startExecuting(instructionQueue.instruction[i], inst, "A" + tmp , addBuffer, mulBuffer, loadBuffer, storeBuffer, clock, instructionQueue, latencies)
+                                break;
+                            }
+                        }
+                    }
+                }
+                else if(decoded.name === "L.D") {
+                    for(var j in loadBuffer) {
+                        if(loadBuffer[j].id === inst) {
+                            if(checkReady(loadBuffer[j])) {
+                                var tmp = parseInt(j) + 1
+                                startExecuting(instructionQueue.instruction[i], inst, "L" + tmp , addBuffer, mulBuffer, loadBuffer, storeBuffer, clock, instructionQueue, latencies)
+                                break;
+                            }
+                        }
+                    }
+                }
+                else if(decoded.name === "S.D") {
+                    for(var j in storeBuffer) {
+                        if(storeBuffer[j].id === inst) {
+                            if(checkReady(storeBuffer[j])) {
+                                var tmp = parseInt(j) + 1
+                                startExecuting(instructionQueue.instruction[i], inst, "S" + tmp , addBuffer, mulBuffer, loadBuffer, storeBuffer, clock, instructionQueue, latencies)
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
         for(var i = 0; i < instructionQueue.id.length; i++) { //WriteResult
             if(instructionQueue.issue[i] !== undefined && instructionQueue.execute[i] !== undefined && instructionQueue.writeResult[i] === undefined){
                 if(parseInt(instructionQueue.execute[i].split("..")[1]) === parseInt(clock) - 1) {
@@ -178,56 +229,6 @@ function nextClock() {
             }
         }
 
-        for(var i = 0; i < instructionQueue.id.length; i++) { //Execute
-            if(instructionQueue.issue[i] !== undefined && instructionQueue.execute[i] === undefined){
-                var inst = instructionQueue.id[i]
-                var decoded = decode(instructionQueue.instruction[i], latencies)
-                if(decoded.name === "MUL.D" || decoded.name === "DIV.D") {
-                    for(var j in mulBuffer) {
-                        if(mulBuffer[j].id === inst) {
-                            if(checkReady(mulBuffer[j])) {
-                                var tmp = parseInt(j) + 1
-                                startExecuting(instructionQueue.instruction[i], inst, "M" + tmp , addBuffer, mulBuffer, loadBuffer, storeBuffer, clock, instructionQueue, latencies)
-                                break;
-                            }
-                        }
-                    }
-                }
-                else if(decoded.name === "ADD.D" || decoded.name === "SUB.D") {
-                    for(var j in addBuffer) {
-                        if(addBuffer[j].id === inst) {
-                            if(checkReady(addBuffer[j])) {
-                                var tmp = parseInt(j) + 1
-                                startExecuting(instructionQueue.instruction[i], inst, "A" + tmp , addBuffer, mulBuffer, loadBuffer, storeBuffer, clock, instructionQueue, latencies)
-                                break;
-                            }
-                        }
-                    }
-                }
-                else if(decoded.name === "L.D") {
-                    for(var j in loadBuffer) {
-                        if(loadBuffer[j].id === inst) {
-                            if(checkReady(loadBuffer[j])) {
-                                var tmp = parseInt(j) + 1
-                                startExecuting(instructionQueue.instruction[i], inst, "L" + tmp , addBuffer, mulBuffer, loadBuffer, storeBuffer, clock, instructionQueue, latencies)
-                                break;
-                            }
-                        }
-                    }
-                }
-                else if(decoded.name === "S.D") {
-                    for(var j in storeBuffer) {
-                        if(storeBuffer[j].id === inst) {
-                            if(checkReady(storeBuffer[j])) {
-                                var tmp = parseInt(j) + 1
-                                startExecuting(instructionQueue.instruction[i], inst, "S" + tmp , addBuffer, mulBuffer, loadBuffer, storeBuffer, clock, instructionQueue, latencies)
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-        }
         for(var i = 0; i < instructionQueue.id.length; i++) { //Issuing
             if(instructionQueue.issue[i] === undefined){
                 var decoded = decode(instructionQueue.instruction[i], latencies)
